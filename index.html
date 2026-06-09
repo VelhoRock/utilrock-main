@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UtilRock - Ferramentas práticas para sabedoria, produtividade e empreendedorismo">
     <title>UtilRock - Sabedoria do Velho Rock</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --yellow: #fbbf24;
             --yellow-dark: #f59e0b;
+            --black: #0f0f0f;
+            --dark-gray: #1a1a1a;
+            --light-gray: #e5e5e5;
+            --medium-gray: #999;
         }
 
         * {
@@ -23,9 +28,10 @@
 
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background-color: #0f0f0f;
-            color: #e5e5e5;
+            background-color: var(--black);
+            color: var(--light-gray);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -37,6 +43,7 @@
         h1 { font-size: 3.5rem; line-height: 1.1; }
         h2 { font-size: 2.5rem; line-height: 1.2; }
         h3 { font-size: 1.875rem; }
+        h4 { font-size: 1.5rem; }
 
         a {
             color: var(--yellow);
@@ -46,23 +53,6 @@
 
         a:hover {
             color: var(--yellow-dark);
-        }
-
-        .bark-texture {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/></filter></defs><rect width="200" height="200" fill="%23333"/><rect width="200" height="200" fill="%23444" opacity="0.5" filter="url(%23noise)"/></svg>');
-            background-size: 200px 200px;
-            position: relative;
-        }
-
-        .bark-texture::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(15, 15, 15, 0.85);
-            pointer-events: none;
         }
 
         .container {
@@ -76,11 +66,12 @@
             padding: 0.75rem 1.5rem;
             border: 2px solid var(--yellow);
             background-color: var(--yellow);
-            color: #0f0f0f;
+            color: var(--black);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            font-family: 'Syne', sans-serif;
         }
 
         .btn:hover {
@@ -96,7 +87,7 @@
 
         .btn-outline:hover {
             background-color: var(--yellow);
-            color: #0f0f0f;
+            color: var(--black);
         }
 
         header {
@@ -120,19 +111,21 @@
             align-items: center;
             gap: 0.5rem;
             text-decoration: none;
+            color: var(--yellow);
         }
 
         .logo-box {
             width: 40px;
             height: 40px;
             background: var(--yellow);
-            color: #000;
+            color: var(--black);
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.25rem;
             border: 2px solid var(--yellow);
+            font-family: 'Syne', sans-serif;
         }
 
         .logo-text {
@@ -195,17 +188,23 @@
         .badge {
             display: inline-block;
             background: var(--yellow);
-            color: #000;
+            color: var(--black);
             padding: 0.5rem 1rem;
             font-weight: bold;
             margin-bottom: 1.5rem;
             border: 2px solid var(--yellow);
+            font-family: 'Syne', sans-serif;
         }
 
         .tool-card, .pillar-card {
-            background: #1a1a1a;
+            background: var(--dark-gray);
             border: 2px solid var(--yellow);
             padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover, .pillar-card:hover {
+            transform: translateY(-5px);
         }
 
         .pillar-card {
@@ -225,7 +224,7 @@
             border-top: 2px solid var(--yellow);
             padding-top: 5rem;
             padding-bottom: 5rem;
-            background: #1a1a1a;
+            background: var(--dark-gray);
             text-align: center;
         }
 
@@ -243,10 +242,9 @@
             margin-bottom: 2rem;
         }
 
-        footer h4 {
+        footer h3, footer h4 {
             color: var(--yellow);
             margin-bottom: 1rem;
-            font-family: 'Syne', sans-serif;
         }
 
         footer ul {
@@ -257,11 +255,38 @@
             margin-bottom: 0.5rem;
         }
 
+        footer p {
+            color: #999;
+        }
+
         .footer-bottom {
             border-top: 2px solid var(--yellow);
             padding-top: 2rem;
             text-align: center;
-            color: #999;
+            color: var(--medium-gray);
+        }
+
+        .bark-bg {
+            background-color: var(--black);
+            position: relative;
+        }
+
+        .bark-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(251, 191, 36, 0.03) 2px, rgba(251, 191, 36, 0.03) 4px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(251, 191, 36, 0.02) 2px, rgba(251, 191, 36, 0.02) 4px);
+            pointer-events: none;
+        }
+
+        main > * {
+            position: relative;
+            z-index: 1;
         }
 
         @media (max-width: 768px) {
@@ -288,21 +313,21 @@
         </div>
     </header>
 
-    <main class="bark-texture">
+    <main class="bark-bg">
         <section id="home" class="hero">
-            <div class="container" style="grid-column: 1;">
+            <div>
                 <div class="badge">BEM-VINDO</div>
                 <h1>Sabedoria do <span style="color: var(--yellow);">Velho Rock</span></h1>
-                <p style="font-size: 1.25rem; color: #ccc; margin-bottom: 2rem; line-height: 1.6;">
+                <p style="font-size: 1.25rem; color: #ccc; margin-bottom: 2rem; line-height: 1.8;">
                     Ferramentas práticas para ajudar você em diversas áreas da vida. Sem fórmulas mágicas, apenas sabedoria testada em projetos reais.
                 </p>
-                <div style="display: flex; gap: 1rem;">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="#about" class="btn">Conheça a História</a>
                     <a href="#tools" class="btn btn-outline">Explorar Ferramentas</a>
                 </div>
             </div>
             <div style="display: flex; justify-content: center;">
-                <img src="velho-rock.webp" alt="Velho Rock" />
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%23333' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fbbf24' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EVelho Rock%3C/text%3E%3C/svg%3E" alt="Velho Rock" style="max-width: 100%; border: 2px solid var(--yellow); border-radius: 8px;">
             </div>
         </section>
 
@@ -311,34 +336,34 @@
                 <div style="margin-bottom: 3rem;">
                     <div class="badge">FERRAMENTAS</div>
                     <h2 style="margin-bottom: 1rem;">Ferramentas Práticas</h2>
-                    <p style="font-size: 1.25rem; color: #999;">
+                    <p style="font-size: 1.25rem; color: var(--medium-gray);">
                         Cada ferramenta foi criada para resolver um problema real. Sem complexidade desnecessária.
                     </p>
                 </div>
 
                 <div class="grid grid-3">
                     <div class="tool-card">
-                        <h3>Calculadora de Tatuagem</h3>
+                        <h3>💰 Calculadora de Tatuagem</h3>
                         <p>Calcule preços justos para seus trabalhos</p>
                     </div>
                     <div class="tool-card">
-                        <h3>Conversor de Horas</h3>
+                        <h3>⏱️ Conversor de Horas</h3>
                         <p>Entenda quanto você realmente trabalha</p>
                     </div>
                     <div class="tool-card">
-                        <h3>Kitchen Survival</h3>
+                        <h3>🍳 Kitchen Survival</h3>
                         <p>Organize seus ingredientes essenciais</p>
                     </div>
                     <div class="tool-card">
-                        <h3>Travel Checklist</h3>
+                        <h3>✈️ Travel Checklist</h3>
                         <p>Nunca mais esqueça nada em uma viagem</p>
                     </div>
                     <div class="tool-card">
-                        <h3>Script Optimizer</h3>
+                        <h3>📝 Script Optimizer</h3>
                         <p>Estruture seus roteiros com clareza</p>
                     </div>
                     <div class="tool-card">
-                        <h3>List Organizer</h3>
+                        <h3>📋 List Organizer</h3>
                         <p>Organize qualquer tipo de lista</p>
                     </div>
                 </div>
@@ -354,19 +379,19 @@
 
                 <div class="grid grid-2">
                     <div class="pillar-card">
-                        <h3>Sabedoria Prática</h3>
+                        <h3>🎸 Sabedoria Prática</h3>
                         <p style="font-size: 1.125rem;">Direto, sem enrolação. Como um para-choque de caminhão.</p>
                     </div>
                     <div class="pillar-card">
-                        <h3>Ética e Caráter</h3>
+                        <h3>💪 Ética e Caráter</h3>
                         <p style="font-size: 1.125rem;">Incentivar pessoas a serem melhores.</p>
                     </div>
                     <div class="pillar-card">
-                        <h3>Trabalho Consistente</h3>
+                        <h3>⚙️ Trabalho Consistente</h3>
                         <p style="font-size: 1.125rem;">Sem fórmulas mágicas, com rigor.</p>
                     </div>
                     <div class="pillar-card">
-                        <h3>Afiar o Machado</h3>
+                        <h3>🪓 Afiar o Machado</h3>
                         <p style="font-size: 1.125rem;">Eficiência através da precisão.</p>
                     </div>
                 </div>
@@ -386,19 +411,19 @@
         <div class="container">
             <div class="grid grid-2">
                 <div>
-                    <h3 style="color: var(--yellow); margin-bottom: 1rem; font-family: 'Syne', sans-serif;">UtilRock</h3>
+                    <h3>UtilRock</h3>
                     <p>Ferramentas práticas para sabedoria, produtividade e empreendedorismo.</p>
                 </div>
                 <div>
                     <h4>Contato</h4>
                     <ul>
-                        <li><a href="mailto:sabedoriadovelhorock@gmail.com">📧 Email</a></li>
+                        <li><a href="mailto:sabedoriadovelhorock@gmail.com">📧 Email: sabedoriadovelhorock@gmail.com</a></li>
                         <li><a href="https://wa.me/5511989040334" target="_blank">💬 WhatsApp: (11) 9 8904-0334</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 UtilRock. Todos os direitos reservados.</p>
+                <p>&copy; 2026 UtilRock - Sabedoria do Velho Rock. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
